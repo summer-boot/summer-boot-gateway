@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO">
+    <Properties>
+        <Property name="directory" value="logs/"/>
+    </Properties>
+
+    <Appenders>
+        <Console name="console" target="SYSTEM_OUT">
+            <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] [%p] %c{36}:%L %m%n"/>
+        </Console>
+
+        <RollingFile name="file" fileName="${directory}/file.log" filePattern="${directory}/file.%i.log.gz">
+            <GatewayLogLayout charset="UTF-8"/>
+            <DefaultRolloverStrategy max="1"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="200 MB"/>
+            </Policies>
+        </RollingFile>
+
+        <RollingFile name="access" fileName="${directory}/access.log" filePattern="${directory}/access.%i.log.gz">
+            <GatewayLogLayout charset="UTF-8"/>
+            <DefaultRolloverStrategy max="1"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="200 MB"/>
+            </Policies>
+        </RollingFile>
+    </Appenders>
+
+    <Loggers>
+        <Logger name="access" additivity="false" level="INFO">
+            <AppenderRef ref="access"/>
+        </Logger>
+        <Root level="INFO">
+            <AppenderRef ref="file"/>
+            <AppenderRef ref="console"/>
+        </Root>
+    </Loggers>
+</Configuration>

@@ -1,0 +1,41 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: summer-boot-gateway
+  threads:
+    virtual:
+      enabled: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+    serialization:
+      write-dates-as-timestamps: false
+  cloud:
+    gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowed-origins: '*'
+            allowed-headers: '*'
+            allowed-methods: HEAD, GET, POST, PUT, DELETE, OPTIONS
+            allow-credentials: false
+            max-age: 1800
+      discovery:
+        locator:
+          lower-case-service-id: true
+      x-forwarded:
+        for-append: false
+      route-refresh-listener:
+        enabled: true
+    nacos:
+      server-addr: 127.0.0.1:8848
+      discovery:
+        namespace: public
+        service: ${spring.application.name}
+      config:
+        namespace: public
+        prefix: ${spring.application.name}
+        file-extension: yaml
+        refresh-enabled: true

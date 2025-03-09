@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS path_replace;
 CREATE TABLE path_replace
 (
-    id           int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+    id           int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
     route_id     varchar(64)      NOT NULL DEFAULT '' COMMENT '路由id',
     raw_path     varchar(255)     NOT NULL DEFAULT '' COMMENT '原始路径',
     replace_path varchar(255)     NOT NULL DEFAULT '' COMMENT '改后路径',

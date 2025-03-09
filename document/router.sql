@@ -6,7 +6,7 @@ CREATE TABLE router
     route_filters    varchar(2048)    NOT NULL DEFAULT '' COMMENT '过滤',
     route_uri        varchar(1024)    NOT NULL DEFAULT '' COMMENT 'uri',
     route_metadata   varchar(2048)    NOT NULL DEFAULT '' COMMENT '属性',
-    route_order      int(11) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
+    route_order      int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
     PRIMARY KEY (route_id)
 ) ENGINE = InnoDB
   DEFAULT CHARSET = utf8mb4 COMMENT = '路由';

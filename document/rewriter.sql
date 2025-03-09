@@ -1,11 +1,11 @@
 DROP TABLE IF EXISTS rewriter;
 CREATE TABLE rewriter
 (
-    id            int(11) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
+    id            int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'id',
     route_id      varchar(64)      NOT NULL DEFAULT '' COMMENT '路由id',
-    rewrite_type  int(11) unsigned NOT NULL DEFAULT '0' COMMENT '类型，协议、域名、端口、路径、请求参数、请求头、请求体、响应体',
+    rewrite_type  int(10) unsigned NOT NULL DEFAULT '0' COMMENT '类型，协议、域名、端口、路径、请求参数、请求头、请求体、响应体',
     rewrite_name  varchar(255)     NOT NULL DEFAULT '' COMMENT '名称',
-    rewrite_order int(11) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
+    rewrite_order int(10) unsigned NOT NULL DEFAULT '0' COMMENT '排序',
     PRIMARY KEY (id),
     UNIQUE KEY idx_unique_route_id_rewrite_type_rewrite_name (route_id, rewrite_type, rewrite_name),
     KEY idx_rewrite_name (rewrite_name)
